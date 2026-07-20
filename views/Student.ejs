@@ -1,0 +1,39 @@
+<%- include("partials/headers") %>
+
+<%- include("partials/nav") %>
+
+<div class="container py-5">
+
+    <div class="card mb-4">
+        <div class="card-body">
+
+            <h2 class="mb-4 text-center">
+                Student List
+            </h2>
+
+            <% dbms.forEach((student,index) => { %>
+   
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h2 class="mb-4"><%= student.studentName %></h2>
+                        <p>Age:<%= student.age %></p>
+                        <p>Email:<%= student.email %></p>
+                        <p>course:<%= student.course %></p>
+                        <p>department:<%= student.department %></p>
+                        <p>Phone:<%= student.phone %></p>
+                        <form action="/delete-Student" method="post" >
+                            <input type="hidden" name="index" value="<%= index %>">
+                        <button type="submit" class="btn btn-danger">Danger</button>
+                        </form>
+
+                        <a href="/edit-Student/<%= index %>" class="btn btn-secondary">Edit</a>
+                    </div>
+                </div>
+           <% }) %>
+        </div>
+
+    </div>
+    </div>
+
+
+<%- include("partials/footer") %>

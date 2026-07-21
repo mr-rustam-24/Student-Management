@@ -23,7 +23,7 @@
                         <p>Phone:<%= student.phone %></p>
                         <form action="/delete-Student" method="post" >
                             <input type="hidden" name="index" value="<%= index %>">
-                        <button type="submit" class="btn btn-danger">Danger</button>
+                        <button type="submit" class="btn btn-danger">Delete</button>
                         </form>
 
                         <a href="/edit-Student/<%= index %>" class="btn btn-secondary">Edit</a>

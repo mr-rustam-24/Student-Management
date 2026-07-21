@@ -1,0 +1,68 @@
+<%- include("partials/headers") %>
+<%- include("partials/nav") %>
+
+<div class="container py-5">
+
+    <div class="card">
+        <div class="card-body">
+
+            <h2>Edit Student</h2>
+
+            <form action="/update-Student" method="POST">
+
+                <input type="hidden" name="index" value="<%= index %>">
+
+                <input
+                    type="text"
+                    name="studentName"
+                    class="form-control mb-3"
+                    value="<%= student.studentName %>"
+                >
+
+                <input
+                    type="number"
+                    name="age"
+                    class="form-control mb-3"
+                    value="<%= student.age %>"
+                >
+
+                <input
+                    type="email"
+                    name="email"
+                    class="form-control mb-3"
+                    value="<%= student.email %>"
+                >
+
+                <input
+                    type="text"
+                    name="course"
+                    class="form-control mb-3"
+                    value="<%= student.course %>"
+                >
+
+                <input
+                    type="text"
+                    name="department"
+                    class="form-control mb-3"
+                    value="<%= student.department %>"
+                >
+
+                <input
+                    type="text"
+                    name="phone"
+                    class="form-control mb-3"
+                    value="<%= student.phone %>"
+                >
+
+                <button class="btn btn-primary">
+                    Update Student
+                </button>
+
+            </form>
+
+        </div>
+    </div>
+
+</div>
+
+<%- include("partials/footer") %>

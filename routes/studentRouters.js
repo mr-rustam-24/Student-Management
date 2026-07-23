@@ -2,69 +2,23 @@ const express = require("express");
 
 const router = express.Router();
 
-router.get("/" , (req,res) =>{
-    res.render("home",{
-        pageTitle : "home"
-    })
-});
+const studentController = require("../Controllers/studentController");
 
-router.get("/Add-Student" , (req,res) =>{
-    res.render("Add-Student" , {
-        pageTitle:"Add-Student"
-    })
-});
+router.get("/" , studentController.getHome);
 
-const dbms = [];
-router.post("/Add-Student" , (req,res) =>{
-    dbms.push(req.body);
-    res.redirect("/Student")
-})
+router.get("/Add-Student" , studentController.getAddStudent);
+
+router.post("/Add-Student" , studentController.addStudentpost);
 
 
-
-router.get("/Student", (req, res) => {
-    res.render("Student", {
-        pageTitle: "Student List",
-        dbms: dbms
-    });
-});
+router.get("/Student", studentController.getStudent);
 
 
-router.post("/delete-Student" , (req,res) =>{
-    const index = req.body.index;
-    dbms.splice(index,1);
-    res.redirect("/Student");
-})
+router.post("/delete-Student" , studentController.deleteStudent);
 
 
-router.get("/edit-Student/:index", (req, res) => {
+router.get("/edit-Student/:index",studentController.getEditStudentindex);
 
-    const index = req.params.index;
-
-    const student = dbms[index];
-
-    res.render("Edit-Student", {
-        pageTitle: "Edit Student",
-        student: student,
-        index: index
-    });
-
-});
-
-router.post("/update-Student", (req, res) => {
-
-    const index = req.body.index;
-
-    dbms[index] = {
-        studentName: req.body.studentName,
-        age: req.body.age,
-        email: req.body.email,
-        course: req.body.course,
-        department: req.body.department,
-        phone: req.body.phone
-    };
-
-    res.redirect("/Student");
-});
+router.post("/update-Student", studentController.updateStudent);
 
 module.exports = router;

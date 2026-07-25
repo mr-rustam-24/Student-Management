@@ -22,10 +22,7 @@ exports.addStudentpost = async(req,res)=>{
 
     }catch(error){
 
-        res.render("Add-Student",{
-            pageTitle:"Add Student",
-            error:"Email already exists or invalid data"
-        });
+        res.send(error.message);
 
     }
 

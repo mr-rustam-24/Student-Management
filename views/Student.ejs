@@ -22,11 +22,11 @@
                         <p>department:<%= student.department %></p>
                         <p>Phone:<%= student.phone %></p>
                         <form action="/delete-Student" method="post" >
-                            <input type="hidden" name="index" value="<%= index %>">
+                            <input type="hidden" name="id" value="<%= student._id %>">
                         <button type="submit" class="btn btn-danger">Delete</button>
                         </form>
 
-                        <a href="/edit-Student/<%= index %>" class="btn btn-secondary">Edit</a>
+                        <a href="/edit-Student/<%= student._id %>" class="btn btn-secondary">Edit</a>
                     </div>
                 </div>
            <% }) %>

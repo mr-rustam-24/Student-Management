@@ -17,7 +17,7 @@ router.get("/Student", studentController.getStudent);
 router.post("/delete-Student" , studentController.deleteStudent);
 
 
-router.get("/edit-Student/:index",studentController.getEditStudentindex);
+router.get("/edit-Student/:id",studentController.getEditStudentindex);
 
 router.post("/update-Student", studentController.updateStudent);
 

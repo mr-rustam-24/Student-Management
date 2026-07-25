@@ -1,11 +1,19 @@
 const express = require("express");
 const path = require("path");
 const mongoose = require("mongoose");
+require("dotenv").config();
 const studentRouter = require("./routes/studentRouters");
 const app = express();
 
-mongoose.connect("mongodb+srv://rustam-009:Rustam@cluster0.vvrfbkb.mongodb.net/?appName=Cluster0")
-.then(() => console.log("mongoDb Connected Successufully")).catch((error) => console.log(error))
+
+mongoose.connect(process.env.MONGO_URL)
+.then(()=>{
+    console.log("MongoDB Connected");
+})
+.catch((error)=>{
+    console.log(error);
+});
+
 app.use(express.urlencoded({extended:true}));
 
 // Static Files
